@@ -1,0 +1,37 @@
+{
+  "config": {
+    "signal_spam_url": "https://www.signal-spam.fr/api/signaler",
+    "user_agent": {
+      "agent": "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Thunderbird/52.4.0",
+      "timeout": 120
+    }
+  },
+  "servers": {
+    "id_server": {
+      "imap": "",
+      "port": 993,
+      "ssl": true
+    }
+  },
+  "accounts": {
+    "signal_spam": {
+      "id_account": {
+        "username": "",
+        "password": ""
+      }
+    },
+    "mailbox": {
+      "id_mailbox": {
+        "enabled": true,
+        "server": "id_server",
+
+        "username": "",
+        "password": "",
+
+        "junk": "INBOX.Junk",
+        "signal_spam_account": "id_account",
+        "delay": 86400
+      }
+    }
+  }
+}

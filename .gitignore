@@ -1,0 +1,8 @@
+config.json
+*.log
+
+# Python
+*.pyc
+
+# PyCharm
+.idea/
