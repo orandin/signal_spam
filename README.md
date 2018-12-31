@@ -9,7 +9,9 @@ You must have an account on [Signal Spam](https://www.signal-spam.fr/).
 
 To install the dependencies, please execute :
 
-`pip install requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 ## Install
 
