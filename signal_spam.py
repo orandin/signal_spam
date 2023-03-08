@@ -20,7 +20,7 @@ def process_email(now, email_raw, delay, signal_spam_account):
     :param signal_spam_account: Signal Spam account credentials
     :return: {@link #send_report}
     """
-    email_message = email.message_from_string(email_raw)
+    email_message = email.message_from_bytes(email_raw)
     sender = email_message["from"]
     date = email_message["date"]
 
@@ -73,7 +73,7 @@ def signal_spam(mailbox):
         else:
             logging.critical(nb_mails)
 
-    except imaplib.IMAP4.error, e:
+    except imaplib.IMAP4.error as e:
         logging.critical(e)
     finally:
         box.logout()
@@ -108,9 +108,9 @@ def send_report(account, sender, date, mail_content):
             return True
 
         logging.critical("Sending the spam report failed [code: " + str(response.status_code) + "]")
-    except requests.ConnectionError, e:
+    except requests.ConnectionError as e:
         logging.critical(e)
-    except requests.Timeout, e:
+    except requests.Timeout as e:
         logging.critical(e)
 
     return False
@@ -134,7 +134,7 @@ def signal_spams():
 
             try:
                 signal_spam(mailbox)
-            except imaplib.IMAP4.error, e:
+            except imaplib.IMAP4.error as e:
                 logging.critical(e)
 
 
@@ -171,7 +171,7 @@ if __name__ == '__main__':
                 signal_spams()
             else:
                 logging.critical("No configuration loaded")
-    except IOError, e:
+    except IOError as e:
         logging.critical(e)
     finally:
         logging.info("Stop Signal Spam")
